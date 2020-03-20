@@ -1,0 +1,26 @@
+// 
+// struct Person {
+//     var name: String
+
+//     mutating func makeAnonymous() {
+//         name = "Anonymous"
+//     }
+// }
+// var person = Person(name: "Ed")
+// person.makeAnonymous()
+// print(person)
+// let string = "Do or do not, there is no try."
+// print(string.count)
+// print(string.hasPrefix("Do"))
+// print(string.uppercased())
+// print(string.sorted())
+// print(string.reversed())
+struct Person {
+    var name: String
+
+    init(name: String) {
+        print("\(name) was born!")
+        self.name = name
+    }
+}
+var ed = Person(name: "Ed")
