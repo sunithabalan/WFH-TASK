@@ -1,0 +1,16 @@
+import Foundation
+var b1 = 50
+let avail = 100
+let case1 = 50
+let outer1 = 5
+let piece1 = 1
+if b1 <= case1 
+{
+ var allocation = avail - case1
+ print(allocation)
+}
+if b1 >= case1 
+{
+    var outerAllocation = avail / outer1
+    print(outerAllocation)
+}
