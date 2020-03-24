@@ -13,13 +13,23 @@ var balance = 0
 for each in 0..<batch.count
 {
 
-if batch[each]["avail"] as! Int >= cases, orderValue >= cases
+if batch[each]["avail"] as! Int >= cases, orderValue >= cases , cases > 0
 {  
     values = batch[each]["avail"] as! Int / cases
     values1 = orderValue / cases
-    batch[each]["cases"] = batch[each]["cases"] as! Int + values1
-    batch[each]["avail"] = abs(batch[each]["avail"] as! Int - (values1 * cases))
-     
+    if values<values1
+    {
+        batch[each]["cases"] = batch[each]["cases"] as! Int + values
+        batch[each]["avail"] = abs(batch[each]["avail"] as! Int - (values * cases))
+        orderValue =  orderValue - (values * cases)
+    }
+     else
+     {
+         batch[each]["cases"] = batch[each]["cases"] as! Int + values1
+         batch[each]["avail"] = abs(batch[each]["avail"] as! Int - (values1 * cases))
+         orderValue =  orderValue - (values1 * cases)
+  
+     }
 }
 else if batch[each]["avail"] as! Int >= outer, orderValue >= outer
  {
