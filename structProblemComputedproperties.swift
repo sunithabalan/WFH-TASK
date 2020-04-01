@@ -79,6 +79,7 @@ for eachstudent in studArr
 
 
 import Foundation
+
 struct Student
 {   
     static var failureName = [String]()
@@ -102,19 +103,24 @@ struct Student
       self.malayalam = malayalam
       self.total = total
       self.percentage = percentage
-       if (physics >= 50 && chemistry >= 50 && maths >= 50 && malayalam >= 50)  {
-            Student.passStudentName.append("name: " + name + "," + "studentId: " +  id + "," + "percentage: " + percentage)
-            Student.percentage.append(percentage)
+       if (physics >= 50 && chemistry >= 50 && maths >= 50 && malayalam >= 50 && percentage >= 50)  {
+            Student.passStudentName.append("name: " + name )
+            Student.percentageArray.append(percentage)
         }
         else {
-            Student.failureName .append("name: " + name + "," + "studentId: " +  id + "," + "percentage: " + percentage)
+            Student.failureName.append("name: " + name )
         }
     }
-    
-           
+     func ranklist()  {
+         let rankList = Student.percentageArray.sorted(by: < )
+         for rank in 0..<rankList.count {
+             print("Rank \(rank + 1) percentage is \(rankList[rank])")
+         }
+        print(rankList)
+     }   
 }
 
-let studArr = ["name: John, id: 1, physics: 89, chemistry: 78, maths: 96, malayalam: 67",
+var studArr = ["name: John, id: 1, physics: 89, chemistry: 78, maths: 96, malayalam: 67",
                "name: Raju, id: 2, physics: 81, chemistry: 68, maths: 96, malayalam: 67",
                "name: mahesh, id: 3, physics: 100, chemistry: 90, maths: 90, malayalam: 100",
                 "name: sheena, id: 4, physics: 34, chemistry: 9, maths: 9, malayalam: 1"]
@@ -138,7 +144,8 @@ for eachstudent in studArr
    let total = intarr.reduce(0, +)
    var perArr = [Int]()
    let percentage = total / (intarr.count)
-   let myStudent = [Student(name: storingValue[0], id: Int(storingValue[1]) ?? 0, physics: Int(storingValue[2]) ?? 0,chemistry: Int(storingValue[3]) ?? 0,maths: Int(storingValue[4]) ?? 0,malayalam: Int(storingValue[5]) ?? 0, total : total, percentage: percentage)]
-}
-   
-   
+   let myStudent = Student(name: storingValue[0], id: Int(storingValue[1]) ?? 0, physics: Int(storingValue[2]) ?? 0,chemistry: Int(storingValue[3]) ?? 0,maths: Int(storingValue[4]) ?? 0,malayalam: Int(storingValue[5]) ?? 0, total : total, percentage: percentage)
+   myStudent.ranklist()
+ }
+//print(Student.passStudentName)
+//print(Student.percentageArray)
