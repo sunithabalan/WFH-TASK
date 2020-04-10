@@ -14,9 +14,9 @@
 // Get random numbers as daily consumable units. For domestic random number generation should be in between 1 - 10. For commercial 10 - 100
 
 import Foundation
-let bill = "commercial"
+let bill = "Domestic"
 var amount:Double = 0
-var total = 0
+var total:Double = 0
 if bill == "Domestic"
 {
 let perDayUnit = Int.random(in:1...10)
@@ -27,26 +27,26 @@ let surchargeForDomestic:Double = 50
 if(units <= 100)
 {
     amount = Double(units * 0)
-    total = Int(amount + surchargeForDomestic)
-    print("The Electricity bill is",total)
+    total = Double(amount + surchargeForDomestic)
+    print("The Electricity bill for domestic is",total)
 }
-else if(units > 101 && units <= 200 )
+else if(units >= 101 && units <= 200 )
 {
-    amount = (Double(units - 100) * 3.50)
-    total = Int(amount + surchargeForDomestic)
-    print("The Electricity bill is",total)
+    amount = Double(units * 0) + (Double(units - 100) * 3.50)
+    total = Double(amount + surchargeForDomestic)
+    print("The Electricity bill for domestic is",total)
 }
 else if(units >= 201 && units <= 500)
 {
-    amount =  (Double(units - 100) * 3.50) + (Double(units - 200) * 4.60)
-    total = Int(amount + surchargeForDomestic)
+    amount =  Double(units * 0) + (Double(units - 100) * 3.50) + (Double(units - 200) * 4.60)
+    total = Double(amount + surchargeForDomestic)
     print("The Electricity bill is",total)
   
 }
 else
 {
     amount = Double(units) * 6.60
-    total = Int(amount + surchargeForDomestic)
+    total = Double(amount + surchargeForDomestic)
     print("The Electricity bill is",total)
 }
 }
@@ -60,14 +60,14 @@ else
 if(units >= 100)
 {
     amount = Double(units) * 5.00
-    total = Int(amount + surchargeForCommercial)
-    print("The Electricity bill for Commerial is",total)
+    total = Double(amount + surchargeForCommercial)
+    print("The Electricity bill for Commercial is",total)
 }
 else
 {
-    amount = Double(units) * 8.05
-    total = Int(amount + surchargeForCommercial)
-    print("The Electricity bill for Commerial is",total)
+    amount =  Double(units) * 5.00 + Double(units - 100) * 8.05
+    total = Double(amount + surchargeForCommercial)
+    print("The Electricity bill for Commercial is",total)
 
 }
 }
