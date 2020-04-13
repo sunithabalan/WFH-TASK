@@ -13,5 +13,17 @@ func loanCalculation(loanAmount : Double, interestRate : Double, years : Int) ->
    return loanAmount + interest
 }
 var loanAmount = loanCalculation(loanAmount:250000, interestRate:14, years: 120)
-let bankbalance = 1000000000 - loanAmount
-print(bankbalance)
+print(loanAmount)
+
+
+// import Foundation
+// let loanCalculation = { (loanAmount : Double,  interestRate : Double, years : Int) -> Double in
+//    let interestRate = interestRate / 100.0
+//    var interestCalculation = pow(1.0 + interestRate, Double(years))
+
+//    return loanAmount * interestCalculation
+// }
+
+// var loanAmount = loanCalculation(2500000, 14, 120)
+
+// print(loanAmount)
