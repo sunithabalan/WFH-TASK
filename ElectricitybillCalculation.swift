@@ -14,16 +14,20 @@
 // Get random numbers as daily consumable units. For domestic random number generation should be in between 1 - 10. For commercial 10 - 100
 
 import Foundation
-let bill = "Domestic"
+let bill = "commercial"
 var amount:Double = 0
 var total:Double = 0
+var perDayUnitFortwoMonth : [Int] = []
 if bill == "Domestic"
 {
-let perDayUnit = Int.random(in:1...10)
-print("The one day unit is",perDayUnit)
-let units  = perDayUnit * 60
-print("Two month unit", units)
 let surchargeForDomestic:Double = 50
+for eachday in 0..<60
+{
+let perDayUnit = Int.random(in:1...10)
+perDayUnitFortwoMonth.append(perDayUnit)
+}
+let units  = perDayUnitFortwoMonth.reduce(0,+)
+print("The unit for two month is", units)
 if(units <= 100)
 {
     amount = Double(units * 0)
@@ -52,11 +56,15 @@ else
 }
 else 
 {
-  let perDayUnit = Int.random(in:10...100)
-  print("The one day unit is",perDayUnit)
-  let units  = perDayUnit * 60
-  let surchargeForCommercial:Double  = 290
-  print("Two month unit", units)
+let surchargeForCommercial:Double  = 290
+for eachday in 0..<60
+{
+let perDayUnit = Int.random(in:10...100)
+perDayUnitFortwoMonth.append(perDayUnit)
+}
+let units  = perDayUnitFortwoMonth.reduce(0,+)
+print("The unit is", units)
+  
 if(units >= 100)
 {
     amount = Double(units) * 5.00
