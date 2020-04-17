@@ -20,7 +20,7 @@ var totalAmountTobePaid:Double = 0
 var perDayUnitFortwoMonth : [Int] = []
 let domesticFirstHundredUnitCharge = 0
 let domesticTwoHundredUnitCharge = 3.50
-let domesticAboveThreeHundredUnitCharge = 4.60
+let domesticThreeHundredUnitCharge = 4.60
 let domesticAboveFiveHundredUnitCharge = 6.60
 let commericalHundredUnitCharge = 5.00
 let commericalAboveHundredUnitCharge = 8.05
@@ -48,7 +48,7 @@ else if(units >= 101 && units <= 200 )
 }
 else if(units >= 201 && units <= 500)
 {
-    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(units - 200) * domesticAboveThreeHundredUnitCharge)
+    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(units - 200) * domesticThreeHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
   
