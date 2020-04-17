@@ -18,11 +18,12 @@ enum readingType:String {
 var calculatingUnit:Double = 0
 var totalAmountTobePaid:Double = 0
 var perDayUnitFortwoMonth : [Int] = []
-let nextHundredUnitCharge = 3.50
-let nextthreeHundredUnitCharge = 4.60
+let domesticFirstHundredUnitCharge = 0
+let domesticTwoHundredUnitCharge = 3.50
+let domesticAbovethreeHundredUnitCharge = 4.60
 let aboveFiveHundredUnitCharge = 6.60
 let commericalHundredUnitCharge = 5.00
-let commericalaboveHundredUnitCharge = 8.05
+let commericalAboveHundredUnitCharge = 8.05
 func billTypeForDomestic(billtype:String)
 {
 let surchargeForDomestic:Double = 50
@@ -35,19 +36,19 @@ let units  = perDayUnitFortwoMonth.reduce(0,+)
 print("The unit for two month is", units)
 if(units <= 100)
 {
-    calculatingUnit = Double(units * 0)
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
 }
 else if(units >= 101 && units <= 200 )
 {
-    calculatingUnit = Double(units * 0) + (Double(units - 100) * nextHundredUnitCharge)
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(units - 100) * domesticTwoHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
 }
 else if(units >= 201 && units <= 500)
 {
-    calculatingUnit =  Double(units * 0) + (Double(200 - 100) * nextHundredUnitCharge) + (Double(units - 200) * nextthreeHundredUnitCharge)
+    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(units - 200) * domesticAbovethreeHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
   
@@ -79,7 +80,7 @@ if(units >= 100)
 }
 else
 {
-    calculatingUnit =  Double(units) * commericalHundredUnitCharge  + Double(units - 100) * commericalaboveHundredUnitCharge
+    calculatingUnit =  Double(units) * commericalHundredUnitCharge  + Double(units - 100) * commericalAboveHundredUnitCharge
     totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
     print("The Electricity bill for Commercial is",totalAmountTobePaid)
 
@@ -93,4 +94,4 @@ if readingType.domestic.rawValue == type
 else
 {
      billTypeForCommercial(billtype:"Commercial")
-}
+} 
