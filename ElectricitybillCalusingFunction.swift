@@ -39,7 +39,7 @@ else if(units >= 101 && units <= 200 )
 }
 else if(units >= 201 && units <= 500)
 {
-    amount =  Double(units * 0) + (Double(units - 100) * 3.50) + (Double(units - 200) * 4.60)
+    amount =  Double(units * 0) + (Double(200 - 100) * 3.50) + (Double(units - 200) * 4.60)
     total = Double(amount + surchargeForDomestic)
     print("The Electricity bill for domestic is",total)
   
