@@ -12,9 +12,17 @@
 // Get random numbers as daily consumable units. For domestic random number generation should be in between 1 - 10. For commercial 10 - 100
 
 import Foundation
-var amount:Double = 0
-var total:Double = 0
+enum readingType:String {
+    case domestic,commerical
+}
+var calculatingUnit:Double = 0
+var totalAmountTobePaid:Double = 0
 var perDayUnitFortwoMonth : [Int] = []
+let nextHundredUnitCharge = 3.50
+let nextthreeHundredUnitCharge = 4.60
+let aboveFiveHundredUnitCharge = 6.60
+let commericalHundredUnitCharge = 5.00
+let commericalaboveHundredUnitCharge = 8.05
 func billTypeForDomestic(billtype:String)
 {
 let surchargeForDomestic:Double = 50
@@ -27,28 +35,28 @@ let units  = perDayUnitFortwoMonth.reduce(0,+)
 print("The unit for two month is", units)
 if(units <= 100)
 {
-    amount = Double(units * 0)
-    total = Double(amount + surchargeForDomestic)
-    print("The Electricity bill for domestic is",total)
+    calculatingUnit = Double(units * 0)
+    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
+    print("The Electricity bill for domestic is",totalAmountTobePaid)
 }
 else if(units >= 101 && units <= 200 )
 {
-    amount = Double(units * 0) + (Double(units - 100) * 3.50)
-    total = Double(amount + surchargeForDomestic)
-    print("The Electricity bill for domestic is",total)
+    calculatingUnit = Double(units * 0) + (Double(units - 100) * nextHundredUnitCharge)
+    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
+    print("The Electricity bill for domestic is",totalAmountTobePaid)
 }
 else if(units >= 201 && units <= 500)
 {
-    amount =  Double(units * 0) + (Double(200 - 100) * 3.50) + (Double(units - 200) * 4.60)
-    total = Double(amount + surchargeForDomestic)
-    print("The Electricity bill for domestic is",total)
+    calculatingUnit =  Double(units * 0) + (Double(200 - 100) * nextHundredUnitCharge) + (Double(units - 200) * nextthreeHundredUnitCharge)
+    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
+    print("The Electricity bill for domestic is",totalAmountTobePaid)
   
 }
 else
 {
-    amount = Double(units) * 6.60
-    total = Double(amount + surchargeForDomestic)
-    print("The Electricity bill is",total)
+    calculatingUnit = Double(units) * aboveFiveHundredUnitCharge
+   totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
+    print("The Electricity bill is",totalAmountTobePaid)
 }
 }
 
@@ -65,17 +73,24 @@ print("The unit is", units)
   
 if(units >= 100)
 {
-    amount = Double(units) * 5.00
-    total = Double(amount + surchargeForCommercial)
-    print("The Electricity bill for Commercial is",total)
+    calculatingUnit = Double(units) * commericalHundredUnitCharge 
+    totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
+    print("The Electricity bill for Commercial is",totalAmountTobePaid)
 }
 else
 {
-    amount =  Double(units) * 5.00 + Double(units - 100) * 8.05
-    total = Double(amount + surchargeForCommercial)
-    print("The Electricity bill for Commercial is",total)
+    calculatingUnit =  Double(units) * commericalHundredUnitCharge  + Double(units - 100) * commericalaboveHundredUnitCharge
+    totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
+    print("The Electricity bill for Commercial is",totalAmountTobePaid)
 
 }
 }
-var billtypeForDomestic = billTypeForDomestic(billtype:"Domestic")
-var billtypeForCommercial = billTypeForCommercial(billtype:"Commercial")
+let type = "domestic"
+if readingType.domestic.rawValue == type
+{
+     billTypeForDomestic(billtype:"Domestic")
+}
+else
+{
+     billTypeForCommercial(billtype:"Commercial")
+}
