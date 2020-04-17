@@ -20,8 +20,8 @@ var totalAmountTobePaid:Double = 0
 var perDayUnitFortwoMonth : [Int] = []
 let domesticFirstHundredUnitCharge = 0
 let domesticTwoHundredUnitCharge = 3.50
-let domesticAbovethreeHundredUnitCharge = 4.60
-let aboveFiveHundredUnitCharge = 6.60
+let domesticAboveThreeHundredUnitCharge = 4.60
+let domesticAboveFiveHundredUnitCharge = 6.60
 let commericalHundredUnitCharge = 5.00
 let commericalAboveHundredUnitCharge = 8.05
 func billTypeForDomestic(billtype:String)
@@ -48,14 +48,14 @@ else if(units >= 101 && units <= 200 )
 }
 else if(units >= 201 && units <= 500)
 {
-    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(units - 200) * domesticAbovethreeHundredUnitCharge)
+    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(units - 200) * domesticAboveThreeHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
   
 }
 else
 {
-    calculatingUnit = Double(units) * aboveFiveHundredUnitCharge
+    calculatingUnit = Double(units) * domesticAboveFiveHundredUnitCharge
    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill is",totalAmountTobePaid)
 }
@@ -94,4 +94,4 @@ if readingType.domestic.rawValue == type
 else
 {
      billTypeForCommercial(billtype:"Commercial")
-} 
+}
