@@ -18,15 +18,13 @@ enum readingType:String {
 var calculatingUnit:Double = 0
 var totalAmountTobePaid:Double = 0
 var perDayUnitFortwoMonth : [Int] = []
+func billTypeForDomestic(billtype:String)
+{
+let surchargeForDomestic:Double = 50
 let domesticFirstHundredUnitCharge = 0
 let domesticTwoHundredUnitCharge = 3.50
 let domesticThreeHundredUnitCharge = 4.60
 let domesticAboveFiveHundredUnitCharge = 6.60
-let commericalHundredUnitCharge = 5.00
-let commericalAboveHundredUnitCharge = 8.05
-func billTypeForDomestic(billtype:String)
-{
-let surchargeForDomestic:Double = 50
 for eachday in 0..<60
 {
 let perDayUnit = Int.random(in:1...10)
@@ -42,7 +40,7 @@ if(units <= 100)
 }
 else if(units >= 101 && units <= 200 )
 {
-    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(units - 100) * domesticTwoHundredUnitCharge)
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
 }
@@ -55,14 +53,18 @@ else if(units >= 201 && units <= 500)
 }
 else
 {
-    calculatingUnit = Double(units) * domesticAboveFiveHundredUnitCharge
-   totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
+
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(500 - 200) * domesticThreeHundredUnitCharge)
+    + Double(units) * domesticAboveFiveHundredUnitCharge
+    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill is",totalAmountTobePaid)
 }
 }
 
 func billTypeForCommercial(billtype:String)
 {
+let commericalHundredUnitCharge = 5.00
+let commericalAboveHundredUnitCharge = 8.05
 let surchargeForCommercial:Double  = 290
 for eachday in 0..<60
 {
