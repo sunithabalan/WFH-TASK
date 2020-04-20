@@ -57,7 +57,7 @@ else if(units >= 201 && units <= 500)
 //Calculation above 500units
 else
 {
-   calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) + (Double(500 - 200) * domesticNextThreeHundredUnitCharge)
+   calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) + (Double(300) * domesticNextThreeHundredUnitCharge)
     + Double(units) * domesticAboveFiveHundredUnitCharge
 }
 totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
