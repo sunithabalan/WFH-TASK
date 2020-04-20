@@ -43,33 +43,25 @@ print("The unit for two month is", units)
 if(units <= 100)
 {
     calculatingUnit = Double(units * domesticFirstHundredUnitCharge)
-    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
-    print("The Electricity bill for domestic is",totalAmountTobePaid)
 }
 //Calculation above 100units
 else if(units >= 101 && units <= 200 )
 {
-    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge)
-    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
-    print("The Electricity bill for domestic is",totalAmountTobePaid)
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) 
 }
 //Calculation above  200units
 else if(units >= 201 && units <= 500)
 {
-    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(units - 200) * domesticNextThreeHundredUnitCharge)
-    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
-    print("The Electricity bill for domestic is",totalAmountTobePaid)
-  
+    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(units - 200) * domesticNextThreeHundredUnitCharge) 
 }
 //Calculation above 500units
 else
 {
-
-    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(500 - 200) * domesticNextThreeHundredUnitCharge)
+   calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(500 - 200) * domesticNextThreeHundredUnitCharge)
     + Double(units) * domesticAboveFiveHundredUnitCharge
-    totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
-    print("The Electricity bill is",totalAmountTobePaid)
 }
+totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
+print("The Electricity bill is",totalAmountTobePaid)
 }
 //Function for calculating the Commercial BillType
 func billTypeForCommercial(billtype:readingType)
@@ -87,23 +79,19 @@ perDayUnitFortwoMonth.append(perDayUnit)
 }
 //Higherorder function for getting twomonth units
 let units  = perDayUnitFortwoMonth.reduce(0,+)
-print("The unit is", units)
+print("The unit for two month  is", units)
 //Calculation for 100units
 if(units >= 100)
 {
     calculatingUnit = Double(units) * commericalHundredUnitCharge 
-    totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
-    print("The Electricity bill for Commercial is",totalAmountTobePaid)
 }
 //Calculation above 100units
 else
 {
     calculatingUnit =  Double(units) * commericalHundredUnitCharge  + Double(units - 100) * commericalAboveHundredUnitCharge
-    totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
-    print("The Electricity bill for Commercial is",totalAmountTobePaid)
-
 }
+totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
+print("The Electricity bill for Commercial is",totalAmountTobePaid)
 }
-//Function call using enums
 let domesticBill = billTypeForDomestic(billtype:readingType.domestic)
 let commercialBill = billTypeForCommercial(billtype:readingType.commercial)
