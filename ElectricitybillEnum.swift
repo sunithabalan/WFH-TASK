@@ -28,8 +28,8 @@ func billTypeForDomestic(billtype:readingType)
 let surchargeForDomestic:Double = 50
 //Charges for 100 200 and above 500 units
 let domesticFirstHundredUnitCharge = 0
-let domesticTwoHundredUnitCharge = 3.50
-let domesticThreeHundredUnitCharge = 4.60
+let domesticNextHundredUnitCharge = 3.50
+let domesticNextThreeHundredUnitCharge = 4.60
 let domesticAboveFiveHundredUnitCharge = 6.60
 //Geting random units for twomonth and storing into empty array
 for eachday in 0..<60
@@ -49,14 +49,14 @@ if(units <= 100)
 //Calculation above 100units
 else if(units >= 101 && units <= 200 )
 {
-    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge)
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
 }
 //Calculation above  200units
 else if(units >= 201 && units <= 500)
 {
-    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(units - 200) * domesticThreeHundredUnitCharge)
+    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(units - 200) * domesticNextThreeHundredUnitCharge)
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill for domestic is",totalAmountTobePaid)
   
@@ -65,7 +65,7 @@ else if(units >= 201 && units <= 500)
 else
 {
 
-    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticTwoHundredUnitCharge) + (Double(500 - 200) * domesticThreeHundredUnitCharge)
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(500 - 200) * domesticNextThreeHundredUnitCharge)
     + Double(units) * domesticAboveFiveHundredUnitCharge
     totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
     print("The Electricity bill is",totalAmountTobePaid)
@@ -104,5 +104,6 @@ else
 
 }
 }
+//Function call using enums
 let domesticBill = billTypeForDomestic(billtype:readingType.domestic)
 let commercialBill = billTypeForCommercial(billtype:readingType.commercial)
