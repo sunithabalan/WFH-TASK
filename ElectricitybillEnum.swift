@@ -61,7 +61,7 @@ else
     + Double(units) * domesticAboveFiveHundredUnitCharge
 }
 totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
-print("The Electricity bill is",totalAmountTobePaid)
+print("The Electricity bill for Domestic is is",totalAmountTobePaid)
 }
 //Function for calculating the Commercial BillType
 func billTypeForCommercial(billtype:readingType)
