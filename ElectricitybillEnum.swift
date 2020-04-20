@@ -47,17 +47,17 @@ if(units <= 100)
 //Calculation above 100units
 else if(units >= 101 && units <= 200 )
 {
-    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) 
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) 
 }
 //Calculation above  200units
 else if(units >= 201 && units <= 500)
 {
-    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(units - 200) * domesticNextThreeHundredUnitCharge) 
+    calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) + (Double(units - 200) * domesticNextThreeHundredUnitCharge) 
 }
 //Calculation above 500units
 else
 {
-   calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(200 - 100) * domesticNextHundredUnitCharge) + (Double(500 - 200) * domesticNextThreeHundredUnitCharge)
+   calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) + (Double(500 - 200) * domesticNextThreeHundredUnitCharge)
     + Double(units) * domesticAboveFiveHundredUnitCharge
 }
 totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
