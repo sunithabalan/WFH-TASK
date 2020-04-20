@@ -93,5 +93,6 @@ else
 totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
 print("The Electricity bill for Commercial is",totalAmountTobePaid)
 }
+//Function call using enum
 let domesticBill = billTypeForDomestic(billtype:readingType.domestic)
 let commercialBill = billTypeForCommercial(billtype:readingType.commercial)
