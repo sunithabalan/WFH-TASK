@@ -81,7 +81,7 @@ perDayUnitFortwoMonth.append(perDayUnit)
 let units  = perDayUnitFortwoMonth.reduce(0,+)
 print("The unit for two month  is", units)
 //Calculation for 100units
-if(units >= 100)
+if(units <= 100)
 {
     calculatingUnit = Double(units) * commericalHundredUnitCharge 
 }
