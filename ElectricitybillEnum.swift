@@ -47,7 +47,7 @@ if(units <= 100)
 //Calculation above 100units
 else if(units >= 101 && units <= 200 )
 {
-    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) 
+    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(units - 100) * domesticNextHundredUnitCharge) 
 }
 //Calculation above  200units
 else if(units >= 201 && units <= 500)
@@ -58,7 +58,7 @@ else if(units >= 201 && units <= 500)
 else
 {
    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) + (Double(300) * domesticNextThreeHundredUnitCharge)
-    + Double(units) * domesticAboveFiveHundredUnitCharge
+    + Double(units - 500) * domesticAboveFiveHundredUnitCharge
 }
 totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
 print("The Electricity bill for Domestic is is",totalAmountTobePaid)
@@ -88,7 +88,7 @@ if(units <= 100)
 //Calculation above 100units
 else
 {
-    calculatingUnit =  Double(units) * commericalHundredUnitCharge  + Double(units - 100) * commericalAboveHundredUnitCharge
+    calculatingUnit =  (100 * commericalHundredUnitCharge)  + Double(units - 100) * commericalAboveHundredUnitCharge
 }
 totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
 print("The Electricity bill for Commercial is",totalAmountTobePaid)
