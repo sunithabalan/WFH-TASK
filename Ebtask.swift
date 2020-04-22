@@ -45,7 +45,7 @@ else if(units >= 201 && units <= 500)
 else
 {
    calculatingUnit = Double(units) * trafficValues["domesticFirstHundredUnitCharge"]! + (Double(100) * trafficValues["domesticNextHundredUnitCharge"]!) + (Double(300) * trafficValues["domesticNextThreeHundredUnitCharge"]!)
-    + Double(units) * trafficValues["domesticAboveFiveHundredUnitCharge"]!
+    + Double(units - 500) * trafficValues["domesticAboveFiveHundredUnitCharge"]!
 }
 totalAmountTobePaid = Double(calculatingUnit + surchargeForDomestic)
 print("The Electricity bill for Domestic is is",totalAmountTobePaid)
