@@ -12,10 +12,17 @@ Fixed charges for two months Rs.290/service
 Get random numbers as daily consumable units. For domestic random number generation should be in between 1 - 10. For commercial 10 - 100
 */
 
+import Foundation
+enum readingType {
+    case domestic 
+    case commercial 
+}
+
 struct ElectricityBillCalculator
 {
     var tariffChargeAndValue : [[Double]]
     var surcharge : Double
+    //calculate unit
     func unitCalculation(startValue:Int,endValue:Int)-> Double {
           var perDayUnitFortwoMonth : [Int] = []
           for eachday in 0..<60{
@@ -58,20 +65,17 @@ struct ElectricityBillCalculator
     }
 }
 
-enum readingType {
-    case domestic 
-    case commercial 
-}
+
 
 let billtype: readingType = .domestic
 switch billtype {
     case .domestic:
-        var domesticBill = ElectricityBillCalculator(tariffChargeAndValue: [[100,0],[200,3.50],[500,4.60],[501,6.60]], surcharge: 50)
+        let domesticBill = ElectricityBillCalculator(tariffChargeAndValue: [[100,0],[200,3.50],[500,4.60],[501,6.60]], surcharge: 50)
         let calculatedUnit = Double(domesticBill.unitCalculation(startValue: 1, endValue: 10))
         print("The unit for two month is",calculatedUnit)
         domesticBill.calculateTheBill(calculatedUnits: calculatedUnit)
     case .commercial:
-        var commercialBill = ElectricityBillCalculator(tariffChargeAndValue: [[100,5.00],[200,8.05]], surcharge: 290)   
+        let commercialBill = ElectricityBillCalculator(tariffChargeAndValue: [[100,5.00],[200,8.05]], surcharge: 290)   
         let calculatedUnit = Double(commercialBill.unitCalculation(startValue: 10, endValue: 100))
         print("The unit for two month is",calculatedUnit)
         commercialBill.calculateTheBill(calculatedUnits: calculatedUnit)
