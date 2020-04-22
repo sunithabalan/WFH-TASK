@@ -40,23 +40,19 @@ perDayUnitFortwoMonth.append(perDayUnit)
 let units  = perDayUnitFortwoMonth.reduce(0,+)
 print("The unit for two month is", units)
 //Calculating units
-if(units <= 100)
-{
+if(units <= 100){
     calculatingUnit = Double(units * domesticFirstHundredUnitCharge)
 }
 //Calculation above 100units
-else if(units >= 101 && units <= 200 )
-{
+else if(units >= 101 && units <= 200 ){
     calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(units - 100) * domesticNextHundredUnitCharge) 
 }
 //Calculation above  200units
-else if(units >= 201 && units <= 500)
-{
+else if(units >= 201 && units <= 500){
     calculatingUnit =  Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) + (Double(units - 200) * domesticNextThreeHundredUnitCharge) 
 }
 //Calculation above 500units
-else
-{
+else{
    calculatingUnit = Double(units * domesticFirstHundredUnitCharge) + (Double(100) * domesticNextHundredUnitCharge) + (Double(300) * domesticNextThreeHundredUnitCharge)
     + Double(units - 500) * domesticAboveFiveHundredUnitCharge
 }
@@ -81,13 +77,11 @@ perDayUnitFortwoMonth.append(perDayUnit)
 let units  = perDayUnitFortwoMonth.reduce(0,+)
 print("The unit for two month  is", units)
 //Calculation for 100units
-if(units <= 100)
-{
+if(units <= 100){
     calculatingUnit = Double(units) * commericalHundredUnitCharge 
 }
 //Calculation above 100units
-else
-{
+else{
     calculatingUnit =  (100 * commericalHundredUnitCharge)  + Double(units - 100) * commericalAboveHundredUnitCharge
 }
 totalAmountTobePaid = Double(calculatingUnit + surchargeForCommercial)
