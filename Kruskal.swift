@@ -1,27 +1,30 @@
 import Foundation
- var verticesEdgesWeight = [[1,2,8],[2,3,1],[2,6,3],[3,6,7],[4,3,4],[1,4,6]]
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
+}
+ var verticesEdgesWeight = ["1:2": 2,"2:3": 1,"2:6": 3,"3:6":7,"4:3": 4,"1:4": 6]
+ var vertices = [1,2,3,4,6]
  var  weights = [Int]()
- for each in verticesEdgesWeight
- {
-     weights.append(each[2])
-
- }
-let sortedWeights = weights.map({ $0 < $1})
-
-import Foundation
- var verticesEdgesWeight = ["1:2": 8,"2:3": 1,"2:6": 3,"3:6":7,"4:3": 4,"1:4": 6]
- var vertices = "1:2:3:4:6"
- var  weights = [String]()
+ var appendingKeys:String = ""
  for (keys,values)  in verticesEdgesWeight.sorted(by:{$0.1 < $1.1})
  {
-   var originalkey:String = keys
-   if vertices == originalkey{
-       print(originalkey, values)
+   weights.append(values)
+   appendingKeys = keys + ":" + appendingKeys
+   var removingColon = appendingKeys.components(separatedBy: ":")
+   let integerArray = removingColon.compactMap({ Int($0) })
+   var removingDuplicates = integerArray.removingDuplicates()
+   var totalofvalues  = weights.reduce(0, +)
+   if vertices == removingDuplicates.sorted() {
+       print(removingDuplicates, totalofvalues)
    }
-   else{
-       originalkey.append(keys)
-       
-       }
-       print(originalkey)
- }
-
+ }v
