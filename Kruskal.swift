@@ -27,4 +27,4 @@ extension Array where Element: Hashable {
    if vertices == removingDuplicates.sorted() {
        print(removingDuplicates, totalofvalues)
    }
- }v
+ }
