@@ -8,7 +8,6 @@ output:Sorted array, swap count, Subtracted value
 */
 
 
-
 import Foundation
 
 let arrayToSort = [9, 22, 50, 10, 33, 41, 21, 40, 80, 60, 26]
@@ -23,23 +22,21 @@ func performSelectionSort(tobeSorted: [Int],index:Int) {
                                  minimiumindex = eachvalues
                         }
              }        
-           if minimiumindex != eachnumber{
+            if minimiumindex != eachnumber{
                  arrayOfSortedelements.swapAt(minimiumindex,eachnumber)
                  numberOfSwap = numberOfSwap + 1
           }
     }
-     print("The Result of sorted Array",arrayOfSortedelements)
-     print("The number of swap taken is",numberOfSwap)
-     
+    print("The Result of sorted Array",arrayOfSortedelements)
+    print("The number of swap taken is",numberOfSwap)
+     //Finding the minimium value after sorting
     var  sumOfSubtractedValues = 0
     var  eachiteration = 0
-    while(eachiteration != index){
-          sumOfSubtractedValues += arrayOfSortedelements[eachiteration] - arrayOfSortedelements[eachiteration + 1]
-          eachiteration = eachiteration + 1
-    }
-    print("The summation value is",abs(sumOfSubtractedValues))
-     
-}
+            while(eachiteration != index){
+                     sumOfSubtractedValues += arrayOfSortedelements[eachiteration] - arrayOfSortedelements[eachiteration + 1]
+                     eachiteration = eachiteration + 1
+             }
+            print("The summation value is",abs(sumOfSubtractedValues))
+ }
 performSelectionSort(tobeSorted: arrayToSort,index:indexvalue)
-
 
