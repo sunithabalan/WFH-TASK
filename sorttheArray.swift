@@ -42,4 +42,4 @@ func performSelectionSort(tobeSorted: [Int],index:Int) {
 }
 performSelectionSort(tobeSorted: arrayToSort,index:indexvalue)
 
-v
+
