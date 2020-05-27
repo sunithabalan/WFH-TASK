@@ -39,3 +39,42 @@ func performSelectionSort(tobeSorted: [Int],index:Int) {
  }
 performSelectionSort(tobeSorted: arrayToSort,index:indexvalue)
 
+import Foundation
+let sizeOfArray =  11
+let indexvalue = 3
+var arrayToSort = [9, 22, 50, 10, 33, 41, 21, 40, 80, 60, 26]
+func performSelectionSort(tobeSorted: inout [Int]) -> Int {
+      var numberOfSwap = 0
+       for currentvalue in 0..<sizeOfArray{
+           var minimiumindex = currentvalue
+                for eachvalues in (currentvalue + 1)..<sizeOfArray{
+                       if tobeSorted[eachvalues] < tobeSorted[minimiumindex]{
+                                 minimiumindex = eachvalues
+                        }
+                 }        
+               if minimiumindex != currentvalue{
+                   tobeSorted.swapAt(minimiumindex,currentvalue)
+                   numberOfSwap = numberOfSwap + 1
+                }
+        }
+    return numberOfSwap
+}
+func performCalculation(indexValue: Int) -> Int {
+   var sumOfSubtractedValues = 0
+   var  eachiteration = 0
+   while(eachiteration != indexValue){
+                     sumOfSubtractedValues += arrayToSort[eachiteration] - arrayToSort[eachiteration + 1]
+                     eachiteration = eachiteration + 1
+             }
+             return abs(sumOfSubtractedValues)
+}
+
+var swapCount = performSelectionSort(tobeSorted:&arrayToSort)
+print("The Result of sorted Array",arrayToSort)
+print("The number of swap count is",swapCount)
+if indexvalue > 0 && indexvalue < sizeOfArray {
+  print("Summation of subtracted values is \(performCalculation(indexValue: indexvalue))")
+}
+else {
+  print("Invalid index values")
+}
