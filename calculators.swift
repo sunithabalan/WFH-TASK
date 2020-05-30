@@ -39,7 +39,7 @@ func solveBracket() -> String
     }
     return String(numlist)          
 } 
-func evaluate(result:String) -> Int{
+func evaluateExpression(result:String) -> Int{
     var operandlist:[Int] = []
     for each in result{
         if "1234567890".contains(each){
@@ -70,5 +70,5 @@ func calculation(operators:Character,secondValue:Int,firstValue:Int) -> Int{
 }
   
 let result = solveBracket()
-let cal = evaluate(result:result)
-print("The result is",cal)
+let calculatedResult = evaluateExpression(result:result)
+print("The result is",calculatedResult)
