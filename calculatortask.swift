@@ -3,9 +3,15 @@ Input will be string (e.g., "23+4+5"
 output: 32.0 
 */
 
-import Foundation
-var expression = "23+4+5"
+/*Create a simple calculator and calculate the values based on the order of precedence
+Input will be string (e.g., "23+4+5"
+output: 32.0 
+*/
 
+
+import Foundation
+let symbols: [String] = ["+","-","*","/","(",")","."]
+var expression = "10.1+2".replacingOccurrences(of:  " ", with: "")
 extension String {
     func replacingFirstOccurrence(of target: String, with replacement: String) -> String {
         guard let range = self.range(of: target) else { return self }
@@ -40,13 +46,25 @@ func expressionArrayMaker (numbers: [String], tempExpression: String) -> [String
     }
     return expressionArray
 }
+func floatProblem (expressionArray: [String]) -> [String] {
+    var expressionArray = expressionArray
+    for eachDot in 0..<(expressionArray.lazy.filter{$0 == "."}.count){
+       let indexOfPoint = expressionArray.index(of: ".") ?? 1
+        var floatValue = "\(expressionArray[indexOfPoint - 1]) \(expressionArray[indexOfPoint]) \(expressionArray[indexOfPoint + 1])"
+        floatValue = floatValue.replacingOccurrences(of:  " ", with: "")
+        expressionArray[indexOfPoint - 1] = floatValue
+        expressionArray.remove(at: indexOfPoint)
+        expressionArray.remove(at: indexOfPoint)
+    }
+    return expressionArray
+}
 func infixToPostFix(expressionArray:[String]) -> [String]{
     var numlist = [String]()
     var operatorList = [String]()
-    var array = "1234567890"
+    // var array = "1234567890"
     var precedence:[String: Int] = ["*": 3, "/": 3, "+": 2, "-": 2, "(": 1]
     for character in expressionArray{
-        if array.contains(character){
+        if symbols.contains(character) != true{
             numlist.append(character)
         }
         else if character == "(" {
@@ -70,13 +88,11 @@ func infixToPostFix(expressionArray:[String]) -> [String]{
    while operatorList.count != 0 {
         numlist.append(operatorList.removeLast())
     }
-    let string = numlist.map { String($0) }.joined(separator: "")
-    //print(string)
     return numlist      
 } 
 func evaluateExpression(postfixExpression:[String]) -> Double{
     var operandList: [Double] = []
-    let symbols: [String] = ["+","-","*","/","(",")","."]
+ 
     let symbolsBasedValues = ["+": 0.0, "-": 0.0, "*": 1.0, "/": 1.0]
     var result = 0.0
     for each in postfixExpression {
@@ -112,9 +128,9 @@ func doCalculation(operators: String, secondOperand: Double, firstOperand: Doubl
     }
 }
 
-
 let result = splitingDecimals()
 let resultOfexpressionArrayMaker = expressionArrayMaker (numbers: result.0, tempExpression: result.1)
-let infixToPostFixConversion = infixToPostFix(expressionArray:resultOfexpressionArrayMaker) 
+let resultOfDecimal = floatProblem(expressionArray: resultOfexpressionArrayMaker)
+let infixToPostFixConversion = infixToPostFix(expressionArray:resultOfDecimal) 
 let evaluateExpressionResult = evaluateExpression(postfixExpression:infixToPostFixConversion)
 print("The result for calculator is",evaluateExpressionResult)
