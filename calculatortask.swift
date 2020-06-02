@@ -2,9 +2,6 @@
 Input will be string (e.g., "23+4+5"
 output: 32.0 
 */
-
-
-
 import Foundation
 let symbols: [String] = ["+","-","*","/","(",")","."]
 var expression = "10.1+2".replacingOccurrences(of:  " ", with: "")
