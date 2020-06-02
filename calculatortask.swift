@@ -3,13 +3,6 @@ Input will be string (e.g., "23+4+5"
 output: 32.0 
 */
 
-
-/*Create a simple calculator and calculate the values based on the order of precedence
-Input will be string (e.g., "23+4+5"
-output: 32.0 
-*/
-
-
 import Foundation
 var expression = "23+4+5"
 
