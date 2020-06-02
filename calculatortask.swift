@@ -4,6 +4,12 @@ output: 32.0
 */
 
 
+/*Create a simple calculator and calculate the values based on the order of precedence
+Input will be string (e.g., "23+4+5"
+output: 32.0 
+*/
+
+
 import Foundation
 var expression = "23+4+5"
 
@@ -13,8 +19,7 @@ extension String {
         return self.replacingCharacters(in: range, with: replacement)
     }
 }
-class Calculator{
-   class func splitingDecimals()  -> ([String],String) {
+func splitingDecimals()  -> ([String],String) {
    var tempExpression = expression
    var numbers = [String]()
    let decimalNumbers = expression.components(separatedBy: CharacterSet.decimalDigits.inverted)
@@ -28,7 +33,7 @@ class Calculator{
     }
     return (numbers,tempExpression) 
 }
-class func expressionArrayMaker (numbers: [String], tempExpression: String) -> [String] {
+func expressionArrayMaker (numbers: [String], tempExpression: String) -> [String] {
     var numbers = numbers
     let tempExpressionArray = Array(tempExpression)
     var expressionArray = [String]()
@@ -42,7 +47,7 @@ class func expressionArrayMaker (numbers: [String], tempExpression: String) -> [
     }
     return expressionArray
 }
-class func infixToPostFix(expressionArray:[String]) -> [String]{
+func infixToPostFix(expressionArray:[String]) -> [String]{
     var numlist = [String]()
     var operatorList = [String]()
     var array = "1234567890"
@@ -76,7 +81,7 @@ class func infixToPostFix(expressionArray:[String]) -> [String]{
     //print(string)
     return numlist      
 } 
-class func evaluateExpression(postfixExpression:[String]) -> Double{
+func evaluateExpression(postfixExpression:[String]) -> Double{
     var operandList: [Double] = []
     let symbols: [String] = ["+","-","*","/","(",")","."]
     let symbolsBasedValues = ["+": 0.0, "-": 0.0, "*": 1.0, "/": 1.0]
@@ -99,7 +104,7 @@ class func evaluateExpression(postfixExpression:[String]) -> Double{
 }
 
 //perform calculations based on  operators
-class func doCalculation(operators: String, secondOperand: Double, firstOperand: Double) -> Double {
+func doCalculation(operators: String, secondOperand: Double, firstOperand: Double) -> Double {
     switch operators {
         case "+" :
             return firstOperand + secondOperand
@@ -113,10 +118,10 @@ class func doCalculation(operators: String, secondOperand: Double, firstOperand:
             return 0                
     }
 }
-}
 
-let result = Calculator.splitingDecimals()
-let resultOfexpressionArrayMaker = Calculator.expressionArrayMaker (numbers: result.0, tempExpression: result.1)
-let infixToPostFixConversion = Calculator.infixToPostFix(expressionArray:resultOfexpressionArrayMaker) 
-let evaluateExpressionResult = Calculator.evaluateExpression(postfixExpression:infixToPostFixConversion)
+
+let result = splitingDecimals()
+let resultOfexpressionArrayMaker = expressionArrayMaker (numbers: result.0, tempExpression: result.1)
+let infixToPostFixConversion = infixToPostFix(expressionArray:resultOfexpressionArrayMaker) 
+let evaluateExpressionResult = evaluateExpression(postfixExpression:infixToPostFixConversion)
 print("The result for calculator is",evaluateExpressionResult)
