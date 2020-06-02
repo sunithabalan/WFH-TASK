@@ -12,8 +12,7 @@ let sizeOfArray =  5
 let indexValue = 3
 var arrayToSort = [7,5,4,3,2]
 //Sorting the elements
-class MinSwapSort{
-class func performSelectionSort() -> Int {
+func performSortToFindMinimumSwap() -> Int {
     var numberOfSwap = 0
     for currentValue in 0..<arrayToSort.count{
         var minimumIndex = currentValue
@@ -30,7 +29,7 @@ class func performSelectionSort() -> Int {
     return numberOfSwap
 }
 //Calculating the smallestvalue
-class func performCalculation(indexValue: Int) -> Int {
+func performCalculationToFindSmallestValue(indexValue: Int) -> Int {
    var sumOfSubtractedValues = 0
    var  eachIteration = 0
    while(eachIteration != indexValue){
@@ -39,15 +38,15 @@ class func performCalculation(indexValue: Int) -> Int {
         }
         return abs(sumOfSubtractedValues)
 }
-}
+
 //Calling the function
-var swapCount = MinSwapSort.performSelectionSort()
+var swapCount = performSortToFindMinimumSwap()
 print("The Result of sorted Array is",arrayToSort)
 print("The number of swap count is",swapCount)
 
 //checking Index range within the size of the Array
 if indexValue > 0 && indexValue < sizeOfArray {
-  print("Summation of subtracted values is \(MinSwapSort.performCalculation(indexValue: indexValue))")
+  print("Summation of subtracted values is \(performCalculationToFindSmallestValue(indexValue: indexValue))")
 }
 else {
   print("Invalid index values")
