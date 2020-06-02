@@ -10,43 +10,44 @@ output:Sorted array, swap count, Subtracted value
 import Foundation
 let sizeOfArray =  5
 let indexValue = 3
-var arrayToSort = [7,5,4,3,2]
+var arrayOfElements = [7,5,4,3,2]
 //Sorting the elements
-func performSortToFindMinimumSwap() -> Int {
+func performSelectionSortToFindMinimumSwapAndSortedArray(from arrayOfElements:[Int]) -> (Int,[Int]) {
+    var arrayOfElements = arrayOfElements
     var numberOfSwap = 0
-    for currentValue in 0..<arrayToSort.count{
+    for currentValue in 0..<arrayOfElements.count{
         var minimumIndex = currentValue
-            for eachValues in (currentValue + 1)..<arrayToSort.count{
-                if arrayToSort[eachValues] < arrayToSort[minimumIndex]{
+            for eachValues in (currentValue + 1)..<arrayOfElements.count{
+                if arrayOfElements[eachValues] < arrayOfElements[minimumIndex]{
                     minimumIndex = eachValues
                     }
                     }           
                     if minimumIndex != currentValue{
-                       arrayToSort.swapAt(minimumIndex,currentValue)
+                     arrayOfElements.swapAt(minimumIndex,currentValue)
                        numberOfSwap = numberOfSwap + 1
                      }
         }
-    return numberOfSwap
+    return (numberOfSwap,arrayOfElements)
 }
 //Calculating the smallestvalue
-func performCalculationToFindSmallestValue(indexValue: Int) -> Int {
+func calculateSumOfSubtractedValuesInArray(till indexValue: Int) -> Int {
    var sumOfSubtractedValues = 0
    var  eachIteration = 0
    while(eachIteration != indexValue){
-        sumOfSubtractedValues += arrayToSort[eachIteration] - arrayToSort[eachIteration + 1]
+        sumOfSubtractedValues += arrayOfElements[eachIteration] - arrayOfElements[eachIteration + 1]
         eachIteration = eachIteration + 1
         }
         return abs(sumOfSubtractedValues)
 }
 
 //Calling the function
-var swapCount = performSortToFindMinimumSwap()
-print("The Result of sorted Array is",arrayToSort)
-print("The number of swap count is",swapCount)
+var resultOfSortedArrayAndSwapcount = performSelectionSortToFindMinimumSwapAndSortedArray(from:arrayOfElements)
+print("The Result of sorted Array is",resultOfSortedArrayAndSwapcount.1)
+print("The number of swap count is",resultOfSortedArrayAndSwapcount.0)
 
 //checking Index range within the size of the Array
 if indexValue > 0 && indexValue < sizeOfArray {
-  print("Summation of subtracted values is \(performCalculationToFindSmallestValue(indexValue: indexValue))")
+  print("Summation of subtracted values is \(calculateSumOfSubtractedValuesInArray(till: indexValue))")
 }
 else {
   print("Invalid index values")
