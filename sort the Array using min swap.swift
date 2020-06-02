@@ -42,8 +42,10 @@ func calculateSumOfSubtractedValuesInArray(till indexValue: Int) -> Int {
 
 //Calling the function
 var resultOfSortedArrayAndSwapcount = performSelectionSortToFindMinimumSwapAndSortedArray(from:arrayOfElements)
-print("The Result of sorted Array is",resultOfSortedArrayAndSwapcount.1)
-print("The number of swap count is",resultOfSortedArrayAndSwapcount.0)
+let resultOfSortedArray = resultOfSortedArrayAndSwapcount.1
+let swapCount = resultOfSortedArrayAndSwapcount.0
+print("The Result of sorted Array is",resultOfSortedArray)
+print("The number of swap count is",swapCount)
 
 //checking Index range within the size of the Array
 if indexValue > 0 && indexValue < sizeOfArray {
