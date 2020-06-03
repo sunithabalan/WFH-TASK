@@ -11,7 +11,7 @@ extension String {
         return self.replacingCharacters(in: range, with: replacement)
     }
 }
-func  splitingDecimals(in expression: String)  -> ([String],String) {
+func  splitingDecimalsDigitsAndTempExpression(in expression: String)  -> ([String],String) {
    var tempExpression = expression
    var numbers = [String]()
    let decimalNumbers = expression.components(separatedBy: CharacterSet.decimalDigits.inverted)
@@ -25,7 +25,7 @@ func  splitingDecimals(in expression: String)  -> ([String],String) {
     }
     return (numbers,tempExpression) 
 }
-func creationOfexpressionArray(for numbersAsStringArray: [String], tempExpression: String) -> [String] {
+func creationOfexpressionArray(for numbersAsStringArray: [String],and tempExpression: String) -> [String] {
     var numbers = numbersAsStringArray
     let tempExpressionArray = Array(tempExpression)
     var expressionArray = [String]()
@@ -51,7 +51,7 @@ func  mergingDecimalPoints(in expressionArray: [String]) -> [String] {
     }
     return expressionArray
 }
-func infixToPostFixConversion(in expressionArray:[String]) -> [String]{
+func infixToPostFixConversion(using expressionArray:[String]) -> [String]{
     var numlist = [String]()
     var operatorList = [String]()
     // var array = "1234567890"
@@ -121,9 +121,9 @@ func doCalculation(operators: String, secondOperand: Double, firstOperand: Doubl
     }
 }
 
-let result = splitingDecimals(in:expression)
-let resultOfexpressionArrayMaker =  creationOfexpressionArray(for: result.0, tempExpression: result.1)
+let result = splitingDecimalsDigitsAndTempExpression(in:expression)
+let resultOfexpressionArrayMaker =  creationOfexpressionArray(for: result.0, and: result.1)
 let resultOfDecimal = mergingDecimalPoints(in: resultOfexpressionArrayMaker)
-let resultOfinfixToPostFixConversion = infixToPostFixConversion(in:resultOfDecimal) 
+let resultOfinfixToPostFixConversion = infixToPostFixConversion(using:resultOfDecimal) 
 let evaluateExpressionResult = evaluation(of:resultOfinfixToPostFixConversion)
 print("The result for calculator is",evaluateExpressionResult)
