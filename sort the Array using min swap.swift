@@ -8,11 +8,13 @@ output:Sorted array, swap count, Subtracted value
 */
 
 import Foundation
+
+import Foundation
 let sizeOfArray =  5
 let indexValue = 3
 var arrayOfElements = [7,5,4,3,2]
 //Sorting the elements
-func performSelectionSortToFindMinimumSwapAndSortedArray(from arrayOfElements:[Int]) -> (Int,[Int]) {
+func performSelectionSortToFindMinimumSwapAndSortedArray(for arrayOfElements:[Int]) -> (Int,[Int]) {
     var arrayOfElements = arrayOfElements
     var numberOfSwap = 0
     for currentValue in 0..<arrayOfElements.count{
@@ -41,7 +43,7 @@ func calculateSumOfSubtractedValuesInArray(till indexValue: Int) -> Int {
 }
 
 //Calling the function
-var resultOfSortedArrayAndSwapcount = performSelectionSortToFindMinimumSwapAndSortedArray(from:arrayOfElements)
+var resultOfSortedArrayAndSwapcount = performSelectionSortToFindMinimumSwapAndSortedArray(for:arrayOfElements)
 let resultOfSortedArray = resultOfSortedArrayAndSwapcount.1
 let swapCount = resultOfSortedArrayAndSwapcount.0
 print("The Result of sorted Array is",resultOfSortedArray)
