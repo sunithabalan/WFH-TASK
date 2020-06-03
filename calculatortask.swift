@@ -11,7 +11,7 @@ extension String {
         return self.replacingCharacters(in: range, with: replacement)
     }
 }
-func splitingDecimals()  -> ([String],String) {
+func  splitingDecimals(in expression: String)  -> ([String],String) {
    var tempExpression = expression
    var numbers = [String]()
    let decimalNumbers = expression.components(separatedBy: CharacterSet.decimalDigits.inverted)
@@ -25,8 +25,8 @@ func splitingDecimals()  -> ([String],String) {
     }
     return (numbers,tempExpression) 
 }
-func expressionArrayMaker (numbers: [String], tempExpression: String) -> [String] {
-    var numbers = numbers
+func creationOfexpressionArray(for numbersAsStringArray: [String], tempExpression: String) -> [String] {
+    var numbers = numbersAsStringArray
     let tempExpressionArray = Array(tempExpression)
     var expressionArray = [String]()
     for each in tempExpressionArray {
@@ -39,19 +39,19 @@ func expressionArrayMaker (numbers: [String], tempExpression: String) -> [String
     }
     return expressionArray
 }
-func floatProblem (expressionArray: [String]) -> [String] {
+func  mergingDecimalPoints(in expressionArray: [String]) -> [String] {
     var expressionArray = expressionArray
-    for eachDot in 0..<(expressionArray.lazy.filter{$0 == "."}.count){
-       let indexOfPoint = expressionArray.index(of: ".") ?? 1
-        var floatValue = "\(expressionArray[indexOfPoint - 1]) \(expressionArray[indexOfPoint]) \(expressionArray[indexOfPoint + 1])"
+    for eachDecimalDot in 0..<(expressionArray.lazy.filter{$0 == "."}.count){
+       let indexOfDecimalPoint = expressionArray.index(of: ".") ?? 1
+        var floatValue = "\(expressionArray[indexOfDecimalPoint - 1]) \(expressionArray[indexOfDecimalPoint]) \(expressionArray[indexOfDecimalPoint + 1])"
         floatValue = floatValue.replacingOccurrences(of:  " ", with: "")
-        expressionArray[indexOfPoint - 1] = floatValue
-        expressionArray.remove(at: indexOfPoint)
-        expressionArray.remove(at: indexOfPoint)
+        expressionArray[indexOfDecimalPoint - 1] = floatValue
+        expressionArray.remove(at: indexOfDecimalPoint)
+        expressionArray.remove(at: indexOfDecimalPoint)
     }
     return expressionArray
 }
-func infixToPostFix(expressionArray:[String]) -> [String]{
+func infixToPostFixConversion(in expressionArray:[String]) -> [String]{
     var numlist = [String]()
     var operatorList = [String]()
     // var array = "1234567890"
@@ -83,7 +83,7 @@ func infixToPostFix(expressionArray:[String]) -> [String]{
     }
     return numlist      
 } 
-func evaluateExpression(postfixExpression:[String]) -> Double{
+func evaluation(of postfixExpression:[String]) -> Double{
     var operandList: [Double] = []
  
     let symbolsBasedValues = ["+": 0.0, "-": 0.0, "*": 1.0, "/": 1.0]
@@ -121,9 +121,9 @@ func doCalculation(operators: String, secondOperand: Double, firstOperand: Doubl
     }
 }
 
-let result = splitingDecimals()
-let resultOfexpressionArrayMaker = expressionArrayMaker (numbers: result.0, tempExpression: result.1)
-let resultOfDecimal = floatProblem(expressionArray: resultOfexpressionArrayMaker)
-let infixToPostFixConversion = infixToPostFix(expressionArray:resultOfDecimal) 
-let evaluateExpressionResult = evaluateExpression(postfixExpression:infixToPostFixConversion)
+let result = splitingDecimals(in:expression)
+let resultOfexpressionArrayMaker =  creationOfexpressionArray(for: result.0, tempExpression: result.1)
+let resultOfDecimal = mergingDecimalPoints(in: resultOfexpressionArrayMaker)
+let resultOfinfixToPostFixConversion = infixToPostFixConversion(in:resultOfDecimal) 
+let evaluateExpressionResult = evaluation(of:resultOfinfixToPostFixConversion)
 print("The result for calculator is",evaluateExpressionResult)
